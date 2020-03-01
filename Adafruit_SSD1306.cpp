@@ -48,7 +48,7 @@
  #include <util/delay.h>
 #endif
 
-#include <Adafruit_GFX.h>
+#include <Adafruit_GFX_Display.h>
 #include "Adafruit_SSD1306.h"
 #include "splash.h"
 
@@ -165,7 +165,7 @@
 */
 Adafruit_SSD1306::Adafruit_SSD1306(uint8_t w, uint8_t h, TwoWire *twi,
   int8_t rst_pin, uint32_t clkDuring, uint32_t clkAfter) :
-  Adafruit_GFX(w, h), spi(NULL), wire(twi ? twi : &Wire), buffer(NULL),
+  Adafruit_GFX_Display(w, h), spi(NULL), wire(twi ? twi : &Wire), buffer(NULL),
   mosiPin(-1), clkPin(-1), dcPin(-1), csPin(-1), rstPin(rst_pin)
 #if ARDUINO >= 157
   , wireClk(clkDuring), restoreClk(clkAfter)
@@ -202,7 +202,7 @@ Adafruit_SSD1306::Adafruit_SSD1306(uint8_t w, uint8_t h, TwoWire *twi,
 */
 Adafruit_SSD1306::Adafruit_SSD1306(uint8_t w, uint8_t h,
   int8_t mosi_pin, int8_t sclk_pin, int8_t dc_pin, int8_t rst_pin,
-  int8_t cs_pin) : Adafruit_GFX(w, h), spi(NULL), wire(NULL), buffer(NULL),
+  int8_t cs_pin) : Adafruit_GFX_Display(w, h), spi(NULL), wire(NULL), buffer(NULL),
   mosiPin(mosi_pin), clkPin(sclk_pin), dcPin(dc_pin), csPin(cs_pin),
   rstPin(rst_pin) {
 }
@@ -235,7 +235,7 @@ Adafruit_SSD1306::Adafruit_SSD1306(uint8_t w, uint8_t h,
 */
 Adafruit_SSD1306::Adafruit_SSD1306(uint8_t w, uint8_t h, SPIClass *spi,
   int8_t dc_pin, int8_t rst_pin, int8_t cs_pin, uint32_t bitrate) :
-  Adafruit_GFX(w, h), spi(spi ? spi : &SPI), wire(NULL), buffer(NULL),
+  Adafruit_GFX_Display(w, h), spi(spi ? spi : &SPI), wire(NULL), buffer(NULL),
   mosiPin(-1), clkPin(-1), dcPin(dc_pin), csPin(cs_pin), rstPin(rst_pin) {
 #ifdef SPI_HAS_TRANSACTION
   spiSettings = SPISettings(bitrate, MSBFIRST, SPI_MODE0);
@@ -270,7 +270,7 @@ Adafruit_SSD1306::Adafruit_SSD1306(uint8_t w, uint8_t h, SPIClass *spi,
 */
 Adafruit_SSD1306::Adafruit_SSD1306(int8_t mosi_pin, int8_t sclk_pin,
   int8_t dc_pin, int8_t rst_pin, int8_t cs_pin) :
-  Adafruit_GFX(SSD1306_LCDWIDTH, SSD1306_LCDHEIGHT), spi(NULL), wire(NULL),
+  Adafruit_GFX_Display(SSD1306_LCDWIDTH, SSD1306_LCDHEIGHT), spi(NULL), wire(NULL),
   buffer(NULL), mosiPin(mosi_pin), clkPin(sclk_pin), dcPin(dc_pin),
   csPin(cs_pin), rstPin(rst_pin) {
 }
@@ -297,7 +297,7 @@ Adafruit_SSD1306::Adafruit_SSD1306(int8_t mosi_pin, int8_t sclk_pin,
             allocation is performed there!
 */
 Adafruit_SSD1306::Adafruit_SSD1306(int8_t dc_pin, int8_t rst_pin,
-  int8_t cs_pin) : Adafruit_GFX(SSD1306_LCDWIDTH, SSD1306_LCDHEIGHT),
+  int8_t cs_pin) : Adafruit_GFX_Display(SSD1306_LCDWIDTH, SSD1306_LCDHEIGHT),
   spi(&SPI), wire(NULL), buffer(NULL), mosiPin(-1), clkPin(-1),
   dcPin(dc_pin), csPin(cs_pin), rstPin(rst_pin) {
 #ifdef SPI_HAS_TRANSACTION
@@ -320,7 +320,7 @@ Adafruit_SSD1306::Adafruit_SSD1306(int8_t dc_pin, int8_t rst_pin,
             allocation is performed there!
 */
 Adafruit_SSD1306::Adafruit_SSD1306(int8_t rst_pin) :
-  Adafruit_GFX(SSD1306_LCDWIDTH, SSD1306_LCDHEIGHT), spi(NULL), wire(&Wire),
+  Adafruit_GFX_Display(SSD1306_LCDWIDTH, SSD1306_LCDHEIGHT), spi(NULL), wire(&Wire),
   buffer(NULL), mosiPin(-1), clkPin(-1), dcPin(-1), csPin(-1),
   rstPin(rst_pin) {
 }
